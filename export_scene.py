@@ -79,8 +79,6 @@ class MYADDON_OT_export_scene(bpy.types.Operator, bpy_extras.io_utils.ExportHelp
 
         json_object["transform"] = transform
 
-        json_object["visible"] = object.is_visible
-
         if "file_name" in object:
             json_object["file_name"] = object["file_name"]
 
@@ -90,6 +88,9 @@ class MYADDON_OT_export_scene(bpy.types.Operator, bpy_extras.io_utils.ExportHelp
             collider["center"] = object["collider_center"].to_list()
             collider["size"] = object["collider_size"].to_list()
             json_object["collider"] = collider
+
+        if "disabled" in object:
+            json_object["disabled"] = object["disabled"]
 
         data_parent.append(json_object)
 

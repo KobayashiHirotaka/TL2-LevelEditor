@@ -4,7 +4,7 @@ import mathutils
 class MYADDON_OT_add_collider(bpy.types.Operator):
     bl_idname = "myaddon.myaddon_ot_add_collider"
     
-    bl_label = "コライダー　追加"
+    bl_label = "コライダー 追加"
     
     bl_description = "['collider']カスタムプロパティを追加します"
     

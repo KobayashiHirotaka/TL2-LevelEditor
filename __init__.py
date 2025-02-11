@@ -5,8 +5,10 @@ from .export_scene import MYADDON_OT_export_scene
 from .my_menu import TOPBAR_MT_my_menu
 from .add_filename import MYADDON_OT_add_filename
 from .add_collider import MYADDON_OT_add_collider
+from .add_disabled import MYADDON_OT_add_disabled
 from .filename import OBJECT_PT_file_name
 from .collider import OBJECT_PT_collider
+from .disabled import OBJECT_PT_disabled
 from .draw_collider import DrawCollider
 
 bl_info = {
@@ -24,8 +26,8 @@ bl_info = {
 }    
 
 classes = (MYADDON_OT_export_scene,MYADDON_OT_create_ico_sphere,MYADDON_OT_stretch_vertex,
-    TOPBAR_MT_my_menu,MYADDON_OT_add_filename,MYADDON_OT_add_collider,OBJECT_PT_file_name,
-    OBJECT_PT_collider,)
+    TOPBAR_MT_my_menu,MYADDON_OT_add_filename,MYADDON_OT_add_collider,MYADDON_OT_add_disabled,
+    OBJECT_PT_file_name,OBJECT_PT_collider,OBJECT_PT_disabled,)
 
 def register():
     for cls in classes:
