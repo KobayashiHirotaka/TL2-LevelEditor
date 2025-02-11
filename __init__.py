@@ -2,6 +2,8 @@ import bpy
 from .stretch_vertex import MYADDON_OT_stretch_vertex
 from .create_ico_sphere import MYADDON_OT_create_ico_sphere
 from .export_scene import MYADDON_OT_export_scene
+from .load_spawn_object import MYADDON_OT_load_spawn_object
+from .create_spawn_object import MYADDON_OT_create_spawn_object
 from .my_menu import TOPBAR_MT_my_menu
 from .add_filename import MYADDON_OT_add_filename
 from .add_collider import MYADDON_OT_add_collider
@@ -25,9 +27,18 @@ bl_info = {
     "category": "Object"
 }    
 
-classes = (MYADDON_OT_export_scene,MYADDON_OT_create_ico_sphere,MYADDON_OT_stretch_vertex,
-    TOPBAR_MT_my_menu,MYADDON_OT_add_filename,MYADDON_OT_add_collider,MYADDON_OT_add_disabled,
-    OBJECT_PT_file_name,OBJECT_PT_collider,OBJECT_PT_disabled,)
+classes = (MYADDON_OT_export_scene,
+           MYADDON_OT_create_ico_sphere,
+           MYADDON_OT_stretch_vertex,
+           TOPBAR_MT_my_menu,
+           MYADDON_OT_load_spawn_object,
+           MYADDON_OT_create_spawn_object,
+           MYADDON_OT_add_filename,
+           MYADDON_OT_add_collider,
+           MYADDON_OT_add_disabled,
+           OBJECT_PT_file_name,
+           OBJECT_PT_collider,
+           OBJECT_PT_disabled,)
 
 def register():
     for cls in classes:

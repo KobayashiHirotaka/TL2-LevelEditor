@@ -60,7 +60,11 @@ class MYADDON_OT_export_scene(bpy.types.Operator, bpy_extras.io_utils.ExportHelp
 
         json_object = dict()
 
-        json_object["type"] = object.type
+        if "type" in object:
+            json_object["type"] = object["type"]
+        
+        else:
+            json_object["type"] = object.type
 
         json_object["name"] = object.name
 
