@@ -1,13 +1,13 @@
 import bpy
-from level_editor.stretch_vertex import MYADDON_OT_stretch_vertex
-from level_editor.create_ico_sphere import MYADDON_OT_create_ico_sphere
-from level_editor.export_scene import MYADDON_OT_export_scene
-from level_editor.my_menu import TOPBAR_MT_my_menu
-from level_editor.add_filename import MYADDON_OT_add_filename
-from level_editor.add_collider import MYADDON_OT_add_collider
-from level_editor.filename import OBJECT_PT_file_name
-from level_editor.collider import OBJECT_PT_collider
-from level_editor.draw_collider import DrawCollider
+from .stretch_vertex import MYADDON_OT_stretch_vertex
+from .create_ico_sphere import MYADDON_OT_create_ico_sphere
+from .export_scene import MYADDON_OT_export_scene
+from .my_menu import TOPBAR_MT_my_menu
+from .add_filename import MYADDON_OT_add_filename
+from .add_collider import MYADDON_OT_add_collider
+from .filename import OBJECT_PT_file_name
+from .collider import OBJECT_PT_collider
+from .draw_collider import DrawCollider
 
 bl_info = {
     "name": "レベルエディタ",
