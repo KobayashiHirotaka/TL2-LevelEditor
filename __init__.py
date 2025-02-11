@@ -4,6 +4,8 @@ from .create_ico_sphere import MYADDON_OT_create_ico_sphere
 from .export_scene import MYADDON_OT_export_scene
 from .load_spawn_object import MYADDON_OT_load_spawn_object
 from .create_spawn_object import MYADDON_OT_create_spawn_object
+from .create_player_spawn_object import MYADDON_OT_create_player_spawn_object
+from .create_enemy_spawn_object import MYADDON_OT_create_enemy_spawn_object
 from .my_menu import TOPBAR_MT_my_menu
 from .add_filename import MYADDON_OT_add_filename
 from .add_collider import MYADDON_OT_add_collider
@@ -33,6 +35,8 @@ classes = (MYADDON_OT_export_scene,
            TOPBAR_MT_my_menu,
            MYADDON_OT_load_spawn_object,
            MYADDON_OT_create_spawn_object,
+           MYADDON_OT_create_player_spawn_object,
+           MYADDON_OT_create_enemy_spawn_object,
            MYADDON_OT_add_filename,
            MYADDON_OT_add_collider,
            MYADDON_OT_add_disabled,

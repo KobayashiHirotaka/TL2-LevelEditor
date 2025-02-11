@@ -1,4 +1,5 @@
 import bpy
+from .load_spawn_object import SpawnNames
 from .load_spawn_object import MYADDON_OT_load_spawn_object
 
 class MYADDON_OT_create_spawn_object(bpy.types.Operator):
@@ -9,24 +10,26 @@ class MYADDON_OT_create_spawn_object(bpy.types.Operator):
     bl_description = "出現ポイントのシンボルを作成します"
     
     bl_options = {'REGISTER', 'UNDO'}
+
+    type: bpy.props.StringProperty(name="Type",default="Player")
     
     def execute(self,context):
 
-        spawn_object = bpy.data.objects.get(MYADDON_OT_load_spawn_object.prototype_object_name)
+        spawn_object = bpy.data.objects.get(SpawnNames.names[self.type][SpawnNames.PROTOTYPE])
 
         if spawn_object is None:
             bpy.ops.myaddon.myaddon_ot_load_spawn_object('EXEC_DEFAULT')
 
-            spawn_object = bpy.data.objects.get(MYADDON_OT_load_spawn_object.prototype_object_name)
+            spawn_object = bpy.data.objects.get(SpawnNames.names[self.type][SpawnNames.PROTOTYPE])
 
-            print("出現ポイントのシンボルを作成します")
+        print("出現ポイントのシンボルを作成します")
 
-            bpy.ops.object.select_all(action='DESELECT')
+        bpy.ops.object.select_all(action='DESELECT')
 
-            object = spawn_object.copy()
+        object = spawn_object.copy()
 
-            bpy.context.collection.objects.link(object)
+        bpy.context.collection.objects.link(object)
 
-            object.name = MYADDON_OT_create_spawn_object.object_name
+        object.name = SpawnNames.names[self.type][SpawnNames.INSTANCE]
 
-            return {'FINISHED'}
+        return {'FINISHED'}

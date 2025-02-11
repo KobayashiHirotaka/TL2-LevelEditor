@@ -2,6 +2,17 @@ import bpy
 import os
 import bpy.ops
 
+class SpawnNames():
+
+    PROTOTYPE = 0
+    INSTANCE = 1
+    FILENAME = 2
+
+    names = {}
+
+    names["Enemy"] = ("PrototypeEnemySpawn", "EnemySpawn", "enemy/newPlayer.obj")
+    names["Player"] = ("PrototypePlayerSpawn", "PlayerSpawn", "player/newPlayer.obj")
+
 class MYADDON_OT_load_spawn_object(bpy.types.Operator):
     bl_idname = "myaddon.myaddon_ot_load_spawn_object"
     
@@ -11,21 +22,17 @@ class MYADDON_OT_load_spawn_object(bpy.types.Operator):
 
     bl_options = {"REGISTER", "UNDO"}
 
-    prototype_object_name = "ProttypePlayerSpawn"
-
-    object_name = "PlayerSpawn"
-    
-    def execute(self, context):
+    def load_obj(self, type):
 
         print("出現ポイントのシンボルをImportします")
 
-        spawn_object = bpy.data.objects.get(MYADDON_OT_load_spawn_object.prototype_object_name)
+        spawn_object = bpy.data.objects.get(SpawnNames.names[type][SpawnNames.PROTOTYPE])
         if spawn_object is not None:
             return {'CANCELLED'}
 
         addon_directory = os.path.dirname(__file__)
 
-        relative_path = "player/newPlayer.obj"
+        relative_path = SpawnNames.names[type][SpawnNames.FILENAME]
 
         full_path = os.path.join(addon_directory, relative_path)
 
@@ -36,10 +43,18 @@ class MYADDON_OT_load_spawn_object(bpy.types.Operator):
         
         object = bpy.context.active_object
 
-        object.name = MYADDON_OT_load_spawn_object.prototype_object_name
+        object.name = SpawnNames.names[type][SpawnNames.PROTOTYPE]
 
-        object["type"] = MYADDON_OT_load_spawn_object.object_name
+        object["type"] = SpawnNames.names[type][SpawnNames.INSTANCE]
 
         bpy.context.collection.objects.unlink(object)
 
         return {"FINISHED"}
+    
+    def execute(self,context):
+
+        self.load_obj("Enemy")
+
+        self.load_obj("Player")
+
+        return {'FINISHED'}
